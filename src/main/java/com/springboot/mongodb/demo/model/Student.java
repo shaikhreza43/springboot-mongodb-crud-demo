@@ -3,8 +3,10 @@ package com.springboot.mongodb.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
@@ -36,4 +38,7 @@ public class Student {
     @NotNull(message = "Student Mobile Number cannot be Null or Empty")
     @Indexed(unique = true)
     private String studentMobileNumber;
+
+    @DBRef
+    private Institute institute;
 }
